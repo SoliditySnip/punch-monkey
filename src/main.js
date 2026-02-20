@@ -1,7 +1,10 @@
 import './style.css';
+import { inject } from '@vercel/analytics';
 import Game from './game/Game.js';
 import Music from './game/Music.js';
 import { submitScore, getLeaderboard, getPlayerRank } from './game/Leaderboard.js';
+
+inject();
 
 /* ══════════ STATE ══════════ */
 let game = null;
