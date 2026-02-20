@@ -2,6 +2,7 @@ import './style.css';
 import Game from './game/Game.js';
 import Music from './game/Music.js';
 import { submitScore, getLeaderboard, getPlayerRank } from './game/Leaderboard.js';
+import { inject } from '@vercel/analytics';
 
 /* ══════════ STATE ══════════ */
 let game = null;
@@ -246,5 +247,6 @@ document.getElementById('play-lb-btn').addEventListener('click', async () => {
 });
 
 /* ══════════ INIT ══════════ */
+inject(); // Initialize Vercel Web Analytics
 showScreen('menu');
 loadAssets(); // pre-load in background
