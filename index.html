@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Save Punch 🐒 | The Baby Monkey Game</title>
+  <meta name="description"
+    content="Help Punch the baby monkey survive! Grab the orangutan plushie to protect yourself from the big bullying monkeys." />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ═══ MENU SCREEN ═══ -->
+    <div id="menu-screen" class="screen active">
+      <div class="screen-bg menu-bg"></div>
+      <div class="menu-container">
+        <div class="menu-logo">
+          <div class="logo-img-wrap">
+            <img src="/logo.png" alt="Save Punch Logo" id="logo-punch"
+              onerror="this.style.display='none';document.getElementById('logo-fb').style.display='flex'" />
+            <div class="logo-fb" id="logo-fb">🐒</div>
+          </div>
+          <h1 class="game-title">Save Punch!</h1>
+          <p class="game-sub">🧸 Grab the plushie. Survive the bullies! 🧸</p>
+        </div>
+        <div class="story-card">
+          <p>Punch is a baby monkey at Ichikawa Zoo 🇯🇵 abandoned by his mother. He found comfort in an orange plushie
+            🍊 — but the big monkeys won't stop bullying him…</p>
+        </div>
+        <div class="name-row">
+          <input type="text" id="player-name" class="name-input" placeholder="Enter your name to play…" maxlength="20"
+            autocomplete="off" spellcheck="false" />
+          <p class="name-error hidden" id="name-error">⚠️ Please enter your name first!</p>
+        </div>
+        <button id="start-btn" class="btn btn-play">🐒 Play as Punch!</button>
+        <button id="leaderboard-btn" class="btn btn-board">🏆 Leaderboard</button>
+        <div class="controls-hint">
+          <span>🖥️ WASD / Arrow Keys</span>
+          <span>📱 Touch joystick on mobile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ GAME SCREEN ═══ -->
+    <div id="game-screen" class="screen">
+      <div id="game-ui">
+        <div class="ui-lives" id="lives-display"></div>
+        <div class="ui-center">
+          <div class="ui-score">
+            <span class="ui-label">SCORE</span>
+            <span id="score-value">0</span>
+          </div>
+          <div class="ui-timer" id="timer-display">0:00</div>
+        </div>
+        <div class="ui-right">
+          <div class="ui-shield hidden" id="shield-ui">🧸 <span id="shield-secs">12</span>s</div>
+          <div class="ui-wave">
+            <span class="ui-label">WAVE</span>
+            <span id="wave-value">1</span>
+          </div>
+          <button id="mute-btn" class="mute-btn" title="Toggle Music">🔊</button>
+        </div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div id="joystick-zone">
+        <div id="joystick-base">
+          <div id="joystick-knob"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ GAME OVER SCREEN ═══ -->
+    <div id="gameover-screen" class="screen">
+      <div class="overlay-bg"></div>
+      <div class="gameover-card">
+        <div class="go-emoji">😢</div>
+        <h2>Oh no, Punch!</h2>
+        <p class="go-sub">The big monkeys got you…<br />But your plushie still loves you! 🧸</p>
+        <div class="go-score-wrap">
+          <span class="go-score-label">Your Score</span>
+          <span id="final-score" class="go-score-val">0</span>
+        </div>
+        <div id="rank-msg" class="rank-msg hidden"></div>
+        <div id="save-status" class="save-status">⏳ Saving score…</div>
+        <button id="play-again-btn" class="btn btn-play">🐒 Play Again</button>
+        <button id="menu-btn" class="btn btn-ghost">Main Menu</button>
+      </div>
+    </div>
+
+    <!-- ═══ LEADERBOARD SCREEN ═══ -->
+    <div id="leaderboard-screen" class="screen">
+      <div class="overlay-bg"></div>
+      <div class="lb-card">
+        <button id="back-btn" class="back-btn">← Back</button>
+        <h2>🏆 Hall of Fame</h2>
+        <p class="lb-sub">Top Punch Protectors Worldwide</p>
+        <div id="lb-list" class="lb-list">
+          <div class="lb-loading">Loading champions…</div>
+        </div>
+        <button id="play-lb-btn" class="btn btn-play">🐒 Play Now</button>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
