@@ -204,6 +204,25 @@ document.getElementById('mute-btn').addEventListener('click', () => {
 });
 
 /* ══════════ EVENT LISTENERS ══════════ */
+// CA: copy to clipboard
+const caBadge = document.getElementById('ca-badge');
+const caText = document.getElementById('ca-text');
+if (caBadge && caText) {
+    caBadge.addEventListener('click', () => {
+        const ca = caText.textContent;
+        const copy = () => {
+            caText.textContent = 'Copied!';
+            caBadge.classList.add('copied');
+            setTimeout(() => { caText.textContent = ca; caBadge.classList.remove('copied'); }, 1500);
+        };
+        navigator.clipboard ? navigator.clipboard.writeText(ca).finally(copy) : (() => {
+            const t = document.createElement('textarea'); t.value = ca;
+            document.body.appendChild(t); t.select(); document.execCommand('copy');
+            document.body.removeChild(t); copy();
+        })();
+    });
+}
+
 // Menu → Play
 document.getElementById('start-btn').addEventListener('click', async () => {
     if (!validateName()) return;
